@@ -30,9 +30,11 @@ function NavigationHeader() {
                 >
                   Code Editor
                 </span>
-                <span className="block text-xs text-blue-400/60 font-medium">
-                  Interactive Code Editor
-                </span>
+                <div className="hidden sm:block">
+                  <span className=" block text-xs text-blue-400/60 font-medium">
+                    Interactive Code Editor
+                  </span>
+                </div>
               </div>
             </Link>
 
@@ -47,7 +49,7 @@ function NavigationHeader() {
               to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity"
               />
               <Code2 className="w-4 h-4 relative z-10 group-hover:rotate-3 transition-transform" />
-              <span className="text-sm font-medium relative z-10 group-hover:text-white transition-colors">
+              <span className="hidden sm:block text-sm font-medium relative z-10 group-hover:text-white transition-colors">
                 Snippets
               </span>
             </Link>
