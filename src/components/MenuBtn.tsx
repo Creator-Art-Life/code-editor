@@ -10,13 +10,23 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Blocks, Code2, Menu, MenuIcon, User, Wallet } from "lucide-react";
-import React, { useState } from "react";
+import {
+  Blocks,
+  Code2,
+  Menu,
+  MenuIcon,
+  ShareIcon,
+  User,
+  Wallet,
+} from "lucide-react";
+import React, { useEffect, useState } from "react";
 import { Button, buttonVariants } from "./ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import ThemeSelector from "@/app/(root)/_components/ThemeSelector";
+import { motion } from "framer-motion";
+import ShareSnippetDialog from "@/app/(root)/_components/ShareSnippetDialog";
 
 const sections = [
   { href: "/", label: "Home", icon: Blocks },
@@ -26,14 +36,24 @@ const sections = [
 ];
 
 function MenuBtn({ className }: { className: string }) {
+  const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
+
   const [isOpen, setOpen] = useState(false);
   const pathname = usePathname();
   const activeRoute =
     sections.find(
       (route) => route.href.length > 0 && pathname.includes(route.href)
     ) || sections[0];
+
+  useEffect(() => {
+    if (isShareDialogOpen) {
+      setOpen(false);
+    }
+  }, [isShareDialogOpen]);
+
   return (
-    <div className={cn("pr-5", className)}>
+    <div className={cn("pr-1", className)}>
       <div className="border-separate bg-background">
         <nav className="container flex items-center justify-between px-8">
           <Sheet open={isOpen} onOpenChange={setOpen}>
@@ -92,10 +112,25 @@ function MenuBtn({ className }: { className: string }) {
                 ))}
                 <ThemeSelector />
               </div>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setIsShareDialogOpen(true)}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg overflow-hidden bg-gradient-to-r
+               from-blue-500 to-blue-600 opacity-90 hover:opacity-100 transition-opacity"
+              >
+                <ShareIcon className="size-4 text-white" />
+                <span className=" text-sm font-medium text-white ">
+                  Share Snippets Now
+                </span>
+              </motion.button>
             </SheetContent>
           </Sheet>
         </nav>
       </div>
+      {isShareDialogOpen && (
+        <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)} />
+      )}
     </div>
   );
 }

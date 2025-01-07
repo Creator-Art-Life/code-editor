@@ -20,6 +20,7 @@ import Image from "next/image";
 import Link from "next/link";
 import StarButton from "@/components/StarButton";
 import CodeBlock from "../snippets/[id]/_components/CodeBlock";
+import LoginButton from "@/components/LoginButton";
 
 const TABS = [
   {
@@ -36,6 +37,10 @@ const TABS = [
 
 function ProfilePage() {
   const { user, isLoaded } = useUser();
+  if (!user) {
+    return <NotExistUser />;
+  }
+
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"executions" | "starred">(
     "executions"
@@ -327,4 +332,31 @@ function ProfilePage() {
     </div>
   );
 }
+
+const NotExistUser = () => {
+  return (
+    <div className="relative min-h-screen bg-[#0a0a0f] selection:bg-blue-500/20 selection:text-blue-200">
+      <main className="relative pt-32 pb-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          {/* Hero   */}
+          <div className="text-center mb-24">
+            <div className="relative inline-block">
+              <div className="absolute -inset-px bg-gradient-to-r from-blue-500 to-purple-500 blur-xl opacity-10" />
+              <h1
+                className="relative text-5xl md:text-6xl lg:text-7xl font-semibold bg-gradient-to-r
+               from-gray-100 to-gray-300 text-transparent bg-clip-text mb-8"
+              >
+                You are not logged in <br />
+                Please Sign In to Continue
+              </h1>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <LoginButton />
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+};
 export default ProfilePage;

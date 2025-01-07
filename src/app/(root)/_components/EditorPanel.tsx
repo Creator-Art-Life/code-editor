@@ -126,25 +126,26 @@ function EditorPanel() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleRefresh}
-              className="p-2 bg-[#1e1e2e] hover:bg-[#2a2a3a] rounded-lg ring-1 ring-white/5 transition-colors"
+              className="p-2 bg-[#1e1e2e] hover:bg-[#2a2a3a] rounded-lg ring-1 ring-white/5 transition-colors "
               aria-label="Reset to default code"
             >
               <RotateCcwIcon className="size-4 text-gray-400" />
             </motion.button>
 
             {/* Share Button */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => setIsShareDialogOpen(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg overflow-hidden bg-gradient-to-r
-               from-blue-500 to-blue-600 opacity-90 hover:opacity-100 transition-opacity"
-            >
-              <ShareIcon className="size-4 text-white" />
-              <span className="hidden sm:block text-sm font-medium text-white ">
-                Share
-              </span>
-            </motion.button>
+            <div className="hidden sm:block">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setIsShareDialogOpen(true)}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 opacity-90 hover:opacity-100 transition-opacity "
+              >
+                <ShareIcon className="size-4 text-white" />
+                <span className="hidden sm:block text-sm font-medium text-white ">
+                  Share
+                </span>
+              </motion.button>
+            </div>
           </div>
         </div>
 
