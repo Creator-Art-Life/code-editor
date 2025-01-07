@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import ConvexClientProvider from "@/components/providers/ConvexClientProvider";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
+import NextTopLoader from "nextjs-toploader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,8 +33,8 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 text-gray-100 flex flex-col`}
         >
+          <NextTopLoader color="#6366f1" showSpinner={false} />
           <ConvexClientProvider>{children}</ConvexClientProvider>
-
           <Footer />
           <Toaster />
         </body>

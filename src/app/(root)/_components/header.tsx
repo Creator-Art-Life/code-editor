@@ -2,12 +2,14 @@ import { currentUser } from "@clerk/nextjs/server";
 import { ConvexHttpClient } from "convex/browser";
 import { api } from "../../../../convex/_generated/api";
 import Link from "next/link";
-import { Blocks, Code2, Sparkles } from "lucide-react";
+import { Blocks, Code2, Menu, Sparkles } from "lucide-react";
 import { SignedIn } from "@clerk/nextjs";
 import ThemeSelector from "./ThemeSelector";
 import LanguageSelector from "./LanguageSelector";
 import RunButton from "./run-button";
 import HeaderProfileBtn from "./HeaderProfileBtn";
+import MenuBtn from "@/components/MenuBtn";
+import { useIsMobile } from "@/lib/hooks/use-mobile";
 
 async function Header() {
   const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
@@ -71,10 +73,13 @@ async function Header() {
             </Link>
           </nav>
         </div>
+        <MenuBtn className="block sm:hidden" />
 
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-3">
-            <ThemeSelector />
+            <div className="hidden sm:block">
+              <ThemeSelector />
+            </div>
             <LanguageSelector hasAccess={Boolean(convexUser?.isPro)} />
           </div>
 
@@ -97,7 +102,9 @@ async function Header() {
           </SignedIn>
 
           <div className="pl-3 border-l border-gray-800">
-            <HeaderProfileBtn />
+            <div className="hidden sm:block">
+              <HeaderProfileBtn />
+            </div>
           </div>
         </div>
       </div>

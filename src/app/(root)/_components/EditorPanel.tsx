@@ -5,7 +5,14 @@ import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
 import { Editor } from "@monaco-editor/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
+import {
+  MinusCircle,
+  PlusCircle,
+  PlusSquare,
+  RotateCcwIcon,
+  ShareIcon,
+  TypeIcon,
+} from "lucide-react";
 import { useClerk } from "@clerk/nextjs";
 import { EditorPanelSkeleton } from "./EditorPanelSkeleton";
 import useMounted from "@/hooks/useMounted";
@@ -66,27 +73,50 @@ function EditorPanel() {
               />
             </div>
             <div>
-              <h2 className="text-sm font-medium text-white">Code Editor</h2>
-              <p className="text-xs text-gray-500">
+              <h2 className="text-sm font-medium hover:text-gray-300 text-gray-200">
+                Code Editor
+              </h2>
+              {/* <p className="text-xs text-gray-500">
                 Write and execute your code
-              </p>
+              </p> */}
             </div>
           </div>
           <div className="flex items-center gap-3">
             {/* Font Size Slider */}
-            <div className="flex items-center gap-3 px-3 py-2 bg-[#1e1e2e] rounded-lg ring-1 ring-white/5">
-              <TypeIcon className="size-4 text-gray-400" />
-              <div className="flex items-center gap-3">
-                <Slider
-                  defaultValue={[50]}
-                  max={24}
-                  min={12}
-                  step={1}
-                  value={[fontSize]}
-                  onValueChange={(value: any) => handleFontSizeChange(value[0])}
-                  className="w-20 h-1 bg-gray-600 rounded-lg cursor-pointer"
-                />
-                <span className="text-sm font-medium text-gray-400 min-w-[2rem] text-center">
+            <div className="flex items-center gap-4 px-4 py-3 bg-[#1e1e2e] rounded-xl ring-1 ring-white/10 shadow-lg transition-all hover:ring-white/20">
+              <TypeIcon className="size-5 text-gray-300" />
+
+              <div className="flex items-center gap-4">
+                <div className="hidden sm:block w-28">
+                  <Slider
+                    defaultValue={[50]}
+                    max={24}
+                    min={12}
+                    step={1}
+                    value={[fontSize]}
+                    onValueChange={(value: any) =>
+                      handleFontSizeChange(value[0])
+                    }
+                    className="w-full h-1 bg-gray-700 rounded-lg cursor-pointer"
+                  />
+                </div>
+
+                <div className="flex sm:hidden items-center gap-3">
+                  <button
+                    onClick={() => handleFontSizeChange(fontSize - 1)}
+                    className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-all"
+                  >
+                    <MinusCircle className="size-5 stroke-gray-300" />
+                  </button>
+                  <button
+                    onClick={() => handleFontSizeChange(fontSize + 1)}
+                    className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-all"
+                  >
+                    <PlusCircle className="size-5 stroke-gray-300" />
+                  </button>
+                </div>
+
+                <span className="text-base font-semibold text-gray-300 min-w-[2rem] text-center">
                   {fontSize}
                 </span>
               </div>
@@ -111,7 +141,9 @@ function EditorPanel() {
                from-blue-500 to-blue-600 opacity-90 hover:opacity-100 transition-opacity"
             >
               <ShareIcon className="size-4 text-white" />
-              <span className="text-sm font-medium text-white ">Share</span>
+              <span className="hidden sm:block text-sm font-medium text-white ">
+                Share
+              </span>
             </motion.button>
           </div>
         </div>
