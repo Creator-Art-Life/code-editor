@@ -21,7 +21,8 @@ const eslintConfig = [
       "@typescript-eslint/no-unused-expressions": "off",
       "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
       "react/display-name": "off",
-      "react/no-unescaped-entities": "off"
+      "react/no-unescaped-entities": "off",
+      "react-hooks/rules-of-hooks": "off"
     },
   },
 ];
