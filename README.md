@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Code Editor
 
-## Getting Started
+This project leverages a modern technology stack to build an interactive and dynamic code editor with seamless integration of various tools and services. Below is an overview of the technologies used and their purposes.
 
-First, run the development server:
+## Technology Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### APIs and Integrations
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Svix** — Webhook system for handling real-time event-driven workflows.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Authentication and Authorization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Clerk** — User management and authentication for seamless sign-in and registration processes.
 
-## Learn More
+### Frontend
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js** — Framework for building fast and scalable web applications.
+- **React** — Core library for building the user interface.
+- **React DOM** — Integration of React with the DOM.
+- **ShadCN** — Component library for building intuitive user interfaces.
+- **Framer Motion** — Library for creating smooth animations and transitions.
+- **Lucide-react** — Icon library for clean and responsive UI elements.
+- **Sonner** — Notification system for delivering pop-up messages.
+- **React-flow** — Tool for building diagrams and interactive workflows.
+- **Monaco Editor** — The code editor that powers Visual Studio Code, used for text editing.
+- **React Syntax Highlighter** — Syntax highlighting for displaying code snippets.
+- **Next.js Toploader** — Visual loading indicator for route transitions.
+- **Tailwind Merge** — Utility to manage and merge Tailwind CSS classes dynamically.
+- **TailwindCSS Animate** — Extends TailwindCSS to handle animations with ease.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### State Management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Zustand** — Lightweight and fast state management.
 
-## Deploy on Vercel
+### Styling and UI Utilities
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Clsx** — Utility for conditionally joining class names.
+- **Class Variance Authority** — Tool for managing and varying class-based styles.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Databases and Data Management
+
+- **Convex** — Database and backend logic to manage data efficiently.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Creator-Art-Life/code-editor.git
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   bun install
+   ```
+
+3. Configure environment variables in the `.env` file for API and database connections.
+
+4. Start the project:
+   ```bash
+   bun run dev
+   ```
+
+## Contributing
+
+If you wish to contribute, please fork the repository, make your changes, and submit a pull request. We appreciate your involvement and feedback!
